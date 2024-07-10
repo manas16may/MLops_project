@@ -5,3 +5,4 @@ scipy
 seaborn
 xgboost
 geopy
+uvicorn
