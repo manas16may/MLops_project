@@ -5,8 +5,12 @@ from flask import Flask,request,app,jsonify,url_for,render_template
 from geopy.distance import geodesic
 import numpy as np
 import pandas as pd
-from uvicorn import run as app_run
-app=Flask(__name__)
+from flask_cors import CORS, cross_origin
+
+
+app = Flask(__name__)
+CORS(app)
+
 ## Load the model
 regmodel=pickle.load(open('final_model.pkl','rb'))
 
@@ -40,6 +44,7 @@ def home():
     return render_template('home.html')
 
 @app.route('/predict',methods=['POST'])
+@cross_origin()
 def predict():
     labels=[x for x in request.form.keys()]
     values=[x for x in request.form.values()]
@@ -53,4 +58,4 @@ def predict():
     return render_template("home.html",prediction_text="Time taken is {} minutes".format(output))
 
 if __name__=="__main__":
-    app_run(app,host="0.0.0.0",port=8080)
+    app.run(host="0.0.0.0", port=8080)
