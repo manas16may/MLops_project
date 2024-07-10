@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Delivery Time Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="multiple_deliveries" placeholder="Multiple Deliveries" required="required" /><br>
+    	<input type="text" name="Restaurant_latitude" placeholder="Restaurant Latitude" required="required" /><br>
+        <input type="text" name="Delivery_person_Ratings" placeholder="Delivery person Ratings" required="required" /><br>
+        <input type="text" name="Delivery_location_longitude" placeholder="Delivery location longitude" required="required" /><br>
+        <input type="text" name="Vehicle_condition" placeholder="Vehicle condition" required="required" /><br>
+        <input type="text" name="Delivery_person_Age" placeholder="Delivery person Age" required="required" /><br>
+        <input type="text" name="Restaurant_longitude" placeholder="Restaurant Longitude" required="required" /><br>
+        <input type="text" name="Delivery_location_latitude" placeholder="Delivery location latitude" required="required" /><br>
+
+       
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ {{prediction_text}}
+
+</body>
+</html>
