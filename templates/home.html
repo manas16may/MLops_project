@@ -1,43 +1,119 @@
 <!DOCTYPE html>
-<html >
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title>Delivery Time Prediction</title>
+    <style>
+        body {
+            font-family: 'Exo 2', sans-serif; /* Set Exo 2 as the primary font */
+            background-color: #f2f2f2; /* Light gray background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-  
+        .login {
+            background: #fff;
+            padding: 20px;
+            width: 300px;
+            max-width: 80%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Exo 2', sans-serif; /* Set Exo 2 for header as well */
+            color: #007bff; /* Blue header text */
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff; /* Blue button */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .btn-block {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .btn-large {
+            font-size: 18px;
+        }
+
+        .prediction_text {
+            margin-top: 20px;
+            padding: 20px; /* Increased padding for better spacing */
+            background-color: #f7f7f7; /* Light gray prediction text background */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+        }
+
+        .prediction_text h2 {
+            color: #007bff; /* Blue header text for prediction result */
+            margin-bottom: 10px;
+        }
+
+        .prediction_text p {
+            color: #333; /* Dark text color */
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+    <link href='https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap' rel='stylesheet'>
 </head>
 
 <body>
- <div class="login">
-	<h1>Delivery Time Prediction</h1>
+    <div class="login">
+        <h1>Delivery Time Prediction</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="multiple_deliveries" placeholder="Multiple Deliveries" required="required" /><br>
-    	<input type="text" name="Restaurant_latitude" placeholder="Restaurant Latitude" required="required" /><br>
-        <input type="text" name="Delivery_person_Ratings" placeholder="Delivery person Ratings" required="required" /><br>
-        <input type="text" name="Delivery_location_longitude" placeholder="Delivery location longitude" required="required" /><br>
-        <input type="text" name="Vehicle_condition" placeholder="Vehicle condition" required="required" /><br>
-        <input type="text" name="Delivery_person_Age" placeholder="Delivery person Age" required="required" /><br>
-        <input type="text" name="Restaurant_longitude" placeholder="Restaurant Longitude" required="required" /><br>
-        <input type="text" name="Delivery_location_latitude" placeholder="Delivery location latitude" required="required" /><br>
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="multiple_deliveries" placeholder="Multiple Deliveries" /><br>
+            <input type="text" name="Restaurant_latitude" placeholder="Restaurant Latitude" required="required" /><br>
+            <input type="text" name="Delivery_person_Ratings" placeholder="Delivery Person Ratings" /><br>
+            <input type="text" name="Delivery_location_longitude" placeholder="Delivery Location Longitude" required="required" /><br>
+            <input type="text" name="Vehicle_condition" placeholder="Vehicle Condition" /><br>
+            <input type="text" name="Delivery_person_Age" placeholder="Delivery Person Age" /><br>
+            <input type="text" name="Restaurant_longitude" placeholder="Restaurant Longitude" required="required" /><br>
+            <input type="text" name="Delivery_location_latitude" placeholder="Delivery Location Latitude" required="required" /><br>
+            <input type="text" name="Order_Date" placeholder="Order Date" required="required" /><br>
 
-       
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
+        <br>
+        <br>
+    </div>
+    {{prediction_text}}
 
-   <br>
-   <br>
-  
-   
- </div>
- {{prediction_text}}
 
 </body>
+
 </html>
