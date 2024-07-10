@@ -52,7 +52,5 @@ def predict():
     output=regmodel.predict(final_input[cols_when_model_builds])[0]
     return render_template("home.html",prediction_text="Time taken is {} minutes".format(output))
 
-
-
 if __name__=="__main__":
     app.run(debug=True,host="0.0.0.0",port=8080)
