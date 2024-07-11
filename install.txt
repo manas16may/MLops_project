@@ -2,7 +2,6 @@ numpy
 pandas
 scikit-learn
 scipy
-seaborn
 xgboost
 geopy
 uvicorn
