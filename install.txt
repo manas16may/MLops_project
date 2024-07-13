@@ -4,6 +4,6 @@ scikit-learn
 scipy
 xgboost
 geopy
-uvicorn
+gunicorn
 flask-cors
 flask
