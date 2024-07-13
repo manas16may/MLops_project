@@ -58,4 +58,4 @@ def predict():
     return render_template("home.html",prediction_text="Time taken is {} minutes".format(output))
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0", port=8080)
+    app.run(debug=True)
